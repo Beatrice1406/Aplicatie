@@ -36,17 +36,23 @@ public class RegistrationController {
 
     @FXML
     public void handleRegisterAction() {
-        registrationMessage.setText("Account created successfully!");
-        Parent root;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-            Stage stage=new Stage();
-            stage.setTitle("Agentie Imobiliara");
-            stage.setScene(new Scene(root,600,575));
-            stage.show();
-        }
-        catch(IOException e) {
-            e.printStackTrace();
+            UserService.addUser(fullNameField.getText(),phoneNumberField.getText(),usernameField.getText(), passwordField.getText(), (String) role.getValue());
+            registrationMessage.setText("Account created successfully!");
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+                Stage stage=new Stage();
+                stage.setTitle("Agentie Imobiliara");
+                stage.setScene(new Scene(root,600,575));
+                stage.show();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+        } catch (UsernameAlreadyExistsException e) {
+            registrationMessage.setText(e.getMessage());
         }
     }
 }
