@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.DeleteHouseController">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <Text id="title-text" text="Agentie Imobiliara" textAlignment="CENTER" wrappingWidth="221.125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <font>
+         <Font name="Calibri Bold" size="24.0" />
+      </font></Text>
+    <Text id="title-text1" text="Delete a house" textAlignment="CENTER" wrappingWidth="165.125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <font>
+         <Font name="Calibri Bold" size="18.0" />
+      </font></Text>
+    <TextField id="address" fx:id="Address" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Text id="deletehouseMessage" fx:id="deletehouseMessage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+    <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="4">
+        <Button id="deleteButton" onAction="#handleDeleteHouseAction" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Delete house">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font></Button>
+    </HBox>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <Button id="searchButton" onAction="#handleSearchHouseAction" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Search house">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font></Button>
+    </HBox>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
