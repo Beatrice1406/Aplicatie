@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.SeeHousesController">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <Text id="title-text" text="Agentie Imobiliara" textAlignment="CENTER" wrappingWidth="186.125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+        <font>
+            <Font name="Calibri Bold" size="24.0" />
+        </font></Text>
+
+
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <Button id="seehouses" onAction="#handleSeeHouses" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="See houses on the market">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <Button id="searchButton" onAction="#handleSearchHouseAction" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Search a house by address">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <TextField id="address" fx:id="Address" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+    <Label text="Address:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <Text id="seehousemesage" fx:id="seehousemesage" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+
+</GridPane>
