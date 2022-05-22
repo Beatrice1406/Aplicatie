@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.AddhouseController">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <Text id="title-text" text="Agentie Imobiliara" textAlignment="CENTER" wrappingWidth="310.125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <font>
+         <Font name="Calibri Bold" size="24.0" />
+      </font></Text>
+    <Text id="title-text1" text="Add a house" textAlignment="CENTER" wrappingWidth="124.125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <font>
+         <Font name="Calibri Bold" size="18.0" />
+      </font></Text>
+    <TextField id="address" fx:id="Address" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <TextField id="size" fx:id="Size" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+    <Label text="Size of the house (m^2):" GridPane.columnIndex="0" GridPane.rowIndex="4">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <TextField id="rooms" fx:id="Rooms" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+    <Label text="Number of rooms:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <TextField id="baths" fx:id="Baths" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+    <Label text="Number of baths:" GridPane.columnIndex="0" GridPane.rowIndex="6">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <TextField id="floors" fx:id="Floors" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+    <Label text="Number of floors:" GridPane.columnIndex="0" GridPane.rowIndex="7">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <TextField id="special" fx:id="Special" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+    <Label text="Any special features:" GridPane.columnIndex="0" GridPane.rowIndex="8">
+      <font>
+         <Font name="Calibri Bold" size="14.0" />
+      </font></Label>
+    <Text id="addhouseMessage" fx:id="addhouseMessage" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
+        <Button id="addButton" onAction="#handleAddHouseAction" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Save house">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font></Button>
+    </HBox>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
