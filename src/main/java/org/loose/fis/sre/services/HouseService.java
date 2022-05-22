@@ -48,6 +48,30 @@ public class HouseService {
         houseRepository.insert(new House(Address,Size,Rooms, Baths, Floors,Special));
     }
 
+    public static void deleteHouse(String Address) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(Address, house.getAddress())) {
+
+                houseRepository.remove(house);
+                return;
+            }
+        }
+        throw new HouseDoesNotExistsException(Address);
+    }
+    public static String searchHouse(String address) throws HouseDoesNotExistsException
+    {
+
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(address, house.getAddress())) {
+                return house.toString();
+            }
+        }
+        throw new HouseDoesNotExistsException(address);
+    }
+
     public static void checkAddressDoesNotAlreadyExist(String address) throws AddressAlreadyExistsException {
         for (House house : houseRepository.find()) {
             if (Objects.equals(address, house.getAddress()))
