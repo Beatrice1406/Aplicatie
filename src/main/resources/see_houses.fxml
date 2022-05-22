@@ -21,8 +21,20 @@
                 <Font name="Calibri Bold" size="14.0" />
             </font></Button>
     </HBox>
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+        <Button id="searchButton" onAction="#handleSearchHouseAction" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Search a house by address">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <TextField id="address" fx:id="Address" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+    <Label text="Address:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font>
+   </Label>
     <Text id="seehousemesage" fx:id="seehousemesage" GridPane.columnIndex="1" GridPane.rowIndex="10" />
     <columnConstraints>
         <ColumnConstraints />

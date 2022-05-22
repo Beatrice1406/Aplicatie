@@ -4,6 +4,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.House;
 import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
@@ -39,5 +40,16 @@ public class HouseService {
             s = s + "\n";
         }
         return s;
+    }
+
+    public static String searchHouse(String address) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(address, house.getAddress())) {
+                return house.toString();
+            }
+        }
+        throw new HouseDoesNotExistsException(address);
     }
 }
