@@ -2,9 +2,10 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
+import org.loose.fis.sre.exceptions.AddressAlreadyExistsException;
 import org.loose.fis.sre.model.House;
 import org.loose.fis.sre.model.User;
-import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
@@ -29,7 +30,6 @@ public class HouseService {
     {
         return houseRepository;
     }
-
     public static String  seeHouses()
     {
         String s="";
@@ -42,8 +42,27 @@ public class HouseService {
         return s;
     }
 
+    public static void addHouse(String Address,String Size,String Rooms, String Baths,String Floors, String Special) throws AddressAlreadyExistsException {
+
+        checkAddressDoesNotAlreadyExist(Address);
+        houseRepository.insert(new House(Address,Size,Rooms, Baths, Floors,Special));
+    }
+
+    public static void deleteHouse(String Address) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(Address, house.getAddress())) {
+
+                houseRepository.remove(house);
+                return;
+            }
+        }
+        throw new HouseDoesNotExistsException(Address);
+    }
     public static String searchHouse(String address) throws HouseDoesNotExistsException
     {
+
         for (House house : houseRepository.find())
         {
             if(Objects.equals(address, house.getAddress())) {
@@ -51,5 +70,29 @@ public class HouseService {
             }
         }
         throw new HouseDoesNotExistsException(address);
+    }
+    public static void editHouse(String Address,String Size,String Rooms, String Baths,String Floors, String Special) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(Address, house.getAddress())) {
+                //house.setAddress(Address);
+                house.setSize(Size);
+                house.setRooms(Rooms);
+                house.setBaths(Baths);
+                house.setFloors(Floors);
+                house.setSpecial(Special);
+                houseRepository.update(house);
+                return;
+            }
+        }
+        throw new HouseDoesNotExistsException(Address);
+    }
+
+    public static void checkAddressDoesNotAlreadyExist(String address) throws AddressAlreadyExistsException {
+        for (House house : houseRepository.find()) {
+            if (Objects.equals(address, house.getAddress()))
+                throw new AddressAlreadyExistsException(address);
+        }
     }
 }
