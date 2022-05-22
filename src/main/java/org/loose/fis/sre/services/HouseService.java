@@ -71,6 +71,23 @@ public class HouseService {
         }
         throw new HouseDoesNotExistsException(address);
     }
+    public static void editHouse(String Address,String Size,String Rooms, String Baths,String Floors, String Special) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(Address, house.getAddress())) {
+                //house.setAddress(Address);
+                house.setSize(Size);
+                house.setRooms(Rooms);
+                house.setBaths(Baths);
+                house.setFloors(Floors);
+                house.setSpecial(Special);
+                houseRepository.update(house);
+                return;
+            }
+        }
+        throw new HouseDoesNotExistsException(Address);
+    }
 
     public static void checkAddressDoesNotAlreadyExist(String address) throws AddressAlreadyExistsException {
         for (House house : houseRepository.find()) {
