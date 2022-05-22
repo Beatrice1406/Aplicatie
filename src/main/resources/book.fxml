@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BookingController">
+<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BookingController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
@@ -72,7 +79,12 @@
                 <Font name="Calibri Bold" size="14.0" />
             </font></Button>
     </HBox>
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <Button id="seeAgentsButton" onAction="#handleSeeAgents" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="See list of agents">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
     <Text id="agentsMessage" fx:id="agentsMessage" GridPane.columnIndex="1" GridPane.rowIndex="13" />
     <columnConstraints>
         <ColumnConstraints />
