@@ -2,8 +2,12 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.*;
+import org.loose.fis.sre.exceptions.IncorectCredentials;
+import org.loose.fis.sre.exceptions.NoBookigsExectpion;
+import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.exceptions.AgentDoesNotExistException;
 import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.exceptions.IncorrectNameException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -40,6 +44,13 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+    public static void checkAgentDoesExist(String agent_book) throws AgentDoesNotExistException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(user.getRole(), "Agent") && Objects.equals(user.getFullName(), agent_book))
+                return;
+        }
+        throw new AgentDoesNotExistException(agent_book);
     }
     public static void checkUsername(String username) throws IncorrectNameException
     {
@@ -103,5 +114,16 @@ public class UserService {
         return s;
     }
 
+    public static void CheckNameCredentials (String Name) throws NoBookigsExectpion
+    {
 
+        for (User user : userRepository.find()) {
+            if (Objects.equals(Name, user.getFullName()))
+            {
+                return;
+            }
+        }
+        throw new NoBookigsExectpion(Name);
+
+    }
 }
