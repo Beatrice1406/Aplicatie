@@ -66,7 +66,12 @@
         </font></Label>
     <TextField id="special_req" fx:id="special_req" GridPane.columnIndex="1" GridPane.rowIndex="10" />
     <Text id="bookingMessage" fx:id="make_bookingMessage" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="11">
+        <Button id="bookingButton" onAction="#handleBookingAction" text="Save booking">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="2" />
     <Text id="agentsMessage" fx:id="agentsMessage" GridPane.columnIndex="1" GridPane.rowIndex="13" />
     <columnConstraints>
