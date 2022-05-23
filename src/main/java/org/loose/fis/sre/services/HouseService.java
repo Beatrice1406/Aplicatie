@@ -30,6 +30,8 @@ public class HouseService {
     {
         return houseRepository;
     }
+
+    // da
     public static String  seeHouses()
     {
         String s="";
@@ -46,30 +48,6 @@ public class HouseService {
 
         checkAddressDoesNotAlreadyExist(Address);
         houseRepository.insert(new House(Address,Size,Rooms, Baths, Floors,Special));
-    }
-
-    public static void deleteHouse(String Address) throws HouseDoesNotExistsException
-    {
-        for (House house : houseRepository.find())
-        {
-            if(Objects.equals(Address, house.getAddress())) {
-
-                houseRepository.remove(house);
-                return;
-            }
-        }
-        throw new HouseDoesNotExistsException(Address);
-    }
-    public static String searchHouse(String address) throws HouseDoesNotExistsException
-    {
-
-        for (House house : houseRepository.find())
-        {
-            if(Objects.equals(address, house.getAddress())) {
-                return house.toString();
-            }
-        }
-        throw new HouseDoesNotExistsException(address);
     }
     public static void editHouse(String Address,String Size,String Rooms, String Baths,String Floors, String Special) throws HouseDoesNotExistsException
     {
@@ -88,11 +66,43 @@ public class HouseService {
         }
         throw new HouseDoesNotExistsException(Address);
     }
+    public static void deleteHouse(String Address) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(Address, house.getAddress())) {
 
+                houseRepository.remove(house);
+                return;
+            }
+        }
+        throw new HouseDoesNotExistsException(Address);
+    }
+
+    public static String searchHouse(String address) throws HouseDoesNotExistsException
+    {
+        for (House house : houseRepository.find())
+        {
+            if(Objects.equals(address, house.getAddress())) {
+                return house.toString();
+            }
+        }
+        throw new HouseDoesNotExistsException(address);
+    }
     public static void checkAddressDoesNotAlreadyExist(String address) throws AddressAlreadyExistsException {
         for (House house : houseRepository.find()) {
             if (Objects.equals(address, house.getAddress()))
                 throw new AddressAlreadyExistsException(address);
         }
+    }
+    public static void checkAddressDoesExist(String address) throws HouseDoesNotExistsException {
+        for (House house : houseRepository.find()) {
+            if (Objects.equals(address, house.getAddress()))
+                return;
+        }
+        throw new HouseDoesNotExistsException(address);
+    }
+    public static List<House> getAllHouses() {
+        return houseRepository.find().toList();
     }
 }
