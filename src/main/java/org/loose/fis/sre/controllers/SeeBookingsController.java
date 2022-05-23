@@ -73,6 +73,23 @@ public class SeeBookingsController {
         }
 
     }
+    public void handleReject()
+    {
+        try{
+            BookingService.rejectBooking(Name.getText(),(String) Hour.getValue(),(String) Day.getValue(),(String) Month.getValue(),(String) Year.getValue(), Reason.getText());
+            editbooking.setText("Booking rejected!");
+        }
+        catch (IncorrectDateException e) {
+            editbooking.setText(e.getMessage());
+        }
+        catch (AgentDoesNotExistException e) {
+            editbooking.setText(e.getMessage());
+        }
+        catch (BookingNotFoundException e) {
+            editbooking.setText(e.getMessage());
+        }
+
+    }
 
 }
 
