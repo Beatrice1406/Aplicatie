@@ -1,9 +1,15 @@
 package org.loose.fis.sre.services;
-
+import javafx.fxml.FXML;
+import org.loose.fis.sre.exceptions.*;
+import org.loose.fis.sre.services.UserService;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.model.Booking;
+import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.model.House;
+
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +19,7 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToBooking;
 public class BookingService {
 
     private static ObjectRepository<Booking> bookingRepository;
+    //private static ObjectRepository<House> houseRepository;
 
     public static void initDatabase() {
         FileSystemService.initDirectory_booking();
@@ -40,7 +47,7 @@ public class BookingService {
         bookingRepository.insert(new Booking(address,day,month,year,hour,agent_book,special_req,user));
     }
 
-     static void checkBookingDoesNotAlreadyExist(String day,String month,String year,String hour,String agent_book) throws BookingAlreadyExistsException {
+    static void checkBookingDoesNotAlreadyExist(String day,String month,String year,String hour,String agent_book) throws BookingAlreadyExistsException {
         for (Booking booking : bookingRepository.find()) {
             if (Objects.equals(day, booking.getDay()) && Objects.equals(month, booking.getMonth()) && Objects.equals(year, booking.getYear()) && Objects.equals(hour, booking.getHour())  && Objects.equals(agent_book, booking.getAgent_book()))
                 throw new BookingAlreadyExistsException(day,month,year,hour,agent_book);

@@ -2,12 +2,9 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.IncorectCredentials;
-import org.loose.fis.sre.exceptions.NoBookigsExectpion;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
-import org.loose.fis.sre.exceptions.AgentDoesNotExistException;
+import org.loose.fis.sre.exceptions.*;
+//import org.loose.fis.sre.exceptions.AgentDoesNotExistException;
 import org.loose.fis.sre.model.User;
-import org.loose.fis.sre.exceptions.IncorrectNameException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
