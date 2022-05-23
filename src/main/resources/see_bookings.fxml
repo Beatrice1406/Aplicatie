@@ -17,32 +17,38 @@
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
     <Text id="title-text" text="Agentie Imobiliara" textAlignment="CENTER" wrappingWidth="170.125" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
-      <font>
-         <Font name="Calibri Bold" size="24.0" />
-      </font></Text>
+        <font>
+            <Font name="Calibri Bold" size="24.0" />
+        </font></Text>
 
     <Text id="title-text" text="See your bookings" textAlignment="CENTER" wrappingWidth="162.125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
-      <font>
-         <Font name="Calibri Bold" size="18.0" />
-      </font></Text>
-    <Text id="title-text" text="Approve a booking" wrappingWidth="124.125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
-      <font>
-         <Font name="Calibri Bold" size="14.0" />
-      </font></Text>
-   <Text id="seebookingMessage" fx:id="seebooksmesage" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+        <font>
+            <Font name="Calibri Bold" size="18.0" />
+        </font></Text>
+    <Text id="title-text" text="Approve/Reject a booking" wrappingWidth="124.125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Text>
+    <Text id="seebookingMessage" fx:id="seebooksmesage" GridPane.columnIndex="1" GridPane.rowIndex="20" />
     <Text id="editbooking" fx:id="editbooking" GridPane.columnIndex="1" GridPane.rowIndex="24" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="4">
-        <Button id="SeeBookingsButton"  style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="See your bookings">
-         <font>
-            <Font name="Calibri Bold" size="14.0" />
-         </font></Button>
+        <Button id="SeeBookingsButton" onAction="#handleSeeBookings" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="See your bookings">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
     </HBox>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="14">
-        <Button id="approveBotton"  style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Approve">
-         <font>
-            <Font name="Calibri Bold" size="14.0" />
-         </font></Button>
+        <Button id="approveBotton" onAction="#handleApprove" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Approve">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="14">
+        <Button id="rejectBotton" onAction="#handleReject" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="Reject">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
     </HBox>
     <TextField id="name" fx:id="Name" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
@@ -52,66 +58,70 @@
 
 
     <Label text="Hour:" GridPane.columnIndex="1" GridPane.rowIndex="8">
-      <font>
-         <Font name="Calibri Bold" size="14.0" />
-      </font></Label>
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
     <ChoiceBox fx:id="Hour" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="9">
     </ChoiceBox>
     <Label text="Day:" GridPane.columnIndex="2" GridPane.rowIndex="8">
-      <font>
-         <Font name="Calibri Bold" size="14.0" />
-      </font></Label>
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
     <ChoiceBox fx:id="Day" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="2" GridPane.rowIndex="9">
     </ChoiceBox>
 
     <Label text="Month:" GridPane.columnIndex="1" GridPane.rowIndex="10">
-      <font>
-         <Font name="Calibri Bold" size="14.0" />
-      </font></Label>
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
     <ChoiceBox fx:id="Month" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="11">
     </ChoiceBox>
 
 
     <Label text="Year:" GridPane.columnIndex="2" GridPane.rowIndex="10">
-      <font>
-         <Font name="Calibri Bold" size="14.0" />
-      </font></Label>
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
     <ChoiceBox fx:id="Year" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="2" GridPane.rowIndex="11">
     </ChoiceBox>
     <TextField fx:id="Reason" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="13" />
 
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+    <Label text="RejectionReason:" GridPane.columnIndex="1" GridPane.rowIndex="12">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
 
 
 </GridPane>
