@@ -15,6 +15,8 @@ public class Booking {
     private String hour;
     private String agent_book;
     private String special_req;
+    private String accept_booking;
+    private String rejection_message;
     private String user;
 
     public Booking(String address,String day,String month,String year,String hour, String agent_book, String special_req,String user) {
@@ -26,19 +28,15 @@ public class Booking {
         this.hour = hour;
         this.agent_book = agent_book;
         this.special_req = special_req;
-    }
-    public Booking()
-    {
-
+        this.accept_booking="not responded";
+        this.rejection_message=" ";
     }
 
     public String getUser() {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
+
 
     public String getAddress() {
         return address;
@@ -47,17 +45,9 @@ public class Booking {
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
 
-    public void setAgent_book(String agent_book) {
-        this.agent_book = agent_book;
-    }
 
-    public void setSpecial_req(String special_req) {
-        this.special_req = special_req;
-    }
+
 
     public String getHour() {
         return hour;
@@ -67,44 +57,42 @@ public class Booking {
         return agent_book;
     }
 
-    public String getSpecial_req() {
-        return special_req;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
 
     public String getDay() {
         return day;
+    }
+
+
+
+    public void setAccept_booking(String accept_booking) {
+        this.accept_booking = accept_booking;
+    }
+
+
+    public void setRejection_message(String rejection_message) {
+        this.rejection_message = rejection_message;
     }
 
     public String getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
-    }
 
     public String getYear() {
         return year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
 
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         Booking booking = (Booking) object;
-        return address.equals(booking.address) && day.equals(booking.day) && month.equals(booking.month) && year.equals(booking.year) && hour.equals(booking.hour) && agent_book.equals(booking.agent_book) && special_req.equals(booking.special_req) && user.equals(booking.user);
+        return address.equals(booking.address) && day.equals(booking.day) && month.equals(booking.month) && year.equals(booking.year) && hour.equals(booking.hour) && agent_book.equals(booking.agent_book) && special_req.equals(booking.special_req) && accept_booking.equals(booking.accept_booking) && rejection_message.equals(booking.rejection_message) && user.equals(booking.user);
     }
 
     public int hashCode() {
-        return Objects.hash(super.hashCode(), address, day, month, year, hour, agent_book, special_req, user);
+        return Objects.hash(super.hashCode(), address, day, month, year, hour, agent_book, special_req, accept_booking, rejection_message, user);
     }
 
     @java.lang.Override
@@ -117,6 +105,8 @@ public class Booking {
                 ", hour= " + hour  + "\n" +
                 ", agent_book= " + agent_book +
                 ", special_req= " + special_req   + "\n" +
+                ", accept_booking= " + accept_booking  +
+                ", rejection_message= " + rejection_message +
                 ", Name='" + user  +
                 '}';
     }
