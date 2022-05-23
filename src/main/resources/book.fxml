@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="11" prefHeight="500" prefWidth="700" style="-fx-background-color: #d194e0;" vgap="11" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BookingController">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <Text id="title-text" text="Agentie Imobiliara" wrappingWidth="138.34765625" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="0">
+        <font>
+            <Font name="Calibri Bold" size="24.0" />
+        </font></Text>
+    <Text id="sub-title-text" text="Book a visit" textAlignment="CENTER" wrappingWidth="164.42626953125" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+        <font>
+            <Font name="Calibri Bold" size="18.0" />
+        </font></Text>
+    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <TextField id="name" fx:id="username" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <TextField id="address" fx:id="address" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label text="Day:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+
+    <ChoiceBox id="day" fx:id="day" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+    </ChoiceBox>
+    <Label text="Month:" GridPane.columnIndex="0" GridPane.rowIndex="6">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+
+    <ChoiceBox id="month" fx:id="month" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+    </ChoiceBox>
+    <Label text="Year:" GridPane.columnIndex="0" GridPane.rowIndex="7">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+
+    <ChoiceBox id="year" fx:id="year" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+    </ChoiceBox>
+    <Label text="Hour:" GridPane.columnIndex="0" GridPane.rowIndex="8">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+
+    <ChoiceBox id="hour" fx:id="hour" prefWidth="150.0" style="-fx-background-color: #f6e8fa;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+    </ChoiceBox>
+    <Label text="Agent name:" GridPane.columnIndex="0" GridPane.rowIndex="9">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <TextField id="agent_book" fx:id="agent_book" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    <Label text="Special Requirements:" GridPane.columnIndex="0" GridPane.rowIndex="10">
+        <font>
+            <Font name="Calibri Bold" size="14.0" />
+        </font></Label>
+    <TextField id="special_req" fx:id="special_req" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+    <Text id="bookingMessage" fx:id="make_bookingMessage" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="11">
+        <Button id="bookingButton" onAction="#handleBookingAction" text="Save booking">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <Button id="seeAgentsButton" onAction="#handleSeeAgents" style="-fx-background-color: #f6e8fa; -fx-background-radius: 20;" text="See list of agents">
+            <font>
+                <Font name="Calibri Bold" size="14.0" />
+            </font></Button>
+    </HBox>
+    <Text id="agentsMessage" fx:id="agentsMessage" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+</GridPane>
