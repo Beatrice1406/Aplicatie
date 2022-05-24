@@ -19,7 +19,7 @@ public class Booking {
     private String rejection_message;
     private String user;
 
-    public Booking(String address,String day,String month,String year,String hour, String agent_book, String special_req,String user) {
+    public Booking(String address, String day, String month, String year, String hour, String agent_book, String special_req, String user) {
         this.user=user;
         this.address = address;
         this.day = day;
@@ -31,12 +31,18 @@ public class Booking {
         this.accept_booking="not responded";
         this.rejection_message=" ";
     }
+    public Booking()
+    {
+
+    }
 
     public String getUser() {
         return user;
     }
 
-
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getAddress() {
         return address;
@@ -45,9 +51,17 @@ public class Booking {
     public void setAddress(String address) {
         this.address = address;
     }
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
 
+    public void setAgent_book(String agent_book) {
+        this.agent_book = agent_book;
+    }
 
-
+    public void setSpecial_req(String special_req) {
+        this.special_req = special_req;
+    }
 
     public String getHour() {
         return hour;
@@ -57,17 +71,29 @@ public class Booking {
         return agent_book;
     }
 
+    public String getSpecial_req() {
+        return special_req;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public String getDay() {
         return day;
     }
 
-
+    public String getAccept_booking() {
+        return accept_booking;
+    }
 
     public void setAccept_booking(String accept_booking) {
         this.accept_booking = accept_booking;
     }
 
+    public String getRejection_message() {
+        return rejection_message;
+    }
 
     public void setRejection_message(String rejection_message) {
         this.rejection_message = rejection_message;
@@ -77,11 +103,17 @@ public class Booking {
         return month;
     }
 
+    public void setMonth(String month) {
+        this.month = month;
+    }
 
     public String getYear() {
         return year;
     }
 
+    public void setYear(String year) {
+        this.year = year;
+    }
 
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -95,8 +127,8 @@ public class Booking {
         return Objects.hash(super.hashCode(), address, day, month, year, hour, agent_book, special_req, accept_booking, rejection_message, user);
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Booking{" +
                 "address= " + address +"\n" +
                 ", day=" + day  +
