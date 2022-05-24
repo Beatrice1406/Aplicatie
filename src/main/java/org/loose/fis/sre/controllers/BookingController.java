@@ -5,6 +5,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.exceptions.*;
+import org.loose.fis.sre.exceptions.BookingAlreadyExistsException;
+import org.loose.fis.sre.exceptions.IncorrectNameException;
+import org.loose.fis.sre.exceptions.IncorrectDateException;
+import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
+import org.loose.fis.sre.exceptions.AgentDoesNotExistException;
 import org.loose.fis.sre.services.BookingService;
 import org.loose.fis.sre.services.UserService;
 
@@ -45,13 +50,12 @@ public class BookingController {
     public void handleBookingAction(){
         try
         {
-            BookingService.addBooking(address.getText(),(String) day.getValue(),(String) month.getValue(),(String) year.getValue(),(String) hour.getValue(),
-                    agent_book.getText(),special_req.getText(),username.getText());
+            BookingService.addBooking(address.getText(),(String) day.getValue(),(String) month.getValue(),(String) year.getValue(),(String) hour.getValue(), agent_book.getText(),special_req.getText(),username.getText());
             make_bookingMessage.setText("Booking saved successfully!");
         }
         catch (BookingAlreadyExistsException e) {
             make_bookingMessage.setText(e.getMessage());
-       }
+        }
         catch (IncorrectNameException e) {
             make_bookingMessage.setText(e.getMessage());
         }

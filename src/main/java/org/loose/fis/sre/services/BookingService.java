@@ -16,6 +16,7 @@ import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToBooking;
 
+
 public class BookingService {
 
     private static ObjectRepository<Booking> bookingRepository;
@@ -77,7 +78,19 @@ public class BookingService {
         }
         return s;
     }
-
+    public static String  seeHistoryBookings(String Name) throws NoBookigsExectpion
+    {
+        UserService.CheckNameCredentials(Name);
+        String s="";
+        for (Booking  booking : bookingRepository.find())
+        {
+            if(Objects.equals(Name, booking.getUser())) {
+                s = s + booking.toString();
+                s = s + "\n";
+            }
+        }
+        return s;
+    }
     public static void approveBooking(String Name, String hour,  String day,String month, String year) throws IncorrectDateException, AgentDoesNotExistException,BookingNotFoundException
     {
         UserService.checkAgentDoesExist(Name);
@@ -95,7 +108,6 @@ public class BookingService {
         }
         throw new BookingNotFoundException(Name, hour, day, month, year);
     }
-
     public static void rejectBooking(String Name, String hour,  String day,String month, String year, String Reason) throws IncorrectDateException, AgentDoesNotExistException, BookingNotFoundException
     {
         UserService.checkAgentDoesExist(Name);

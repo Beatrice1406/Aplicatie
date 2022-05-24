@@ -30,7 +30,6 @@ public class DeleteHouseController {
     public void handleSearchHouseAction(){
         try
         {
-
             deletehouseMessage.setText(HouseService.searchHouse(Address.getText()));
         }
         catch (HouseDoesNotExistsException e) {
