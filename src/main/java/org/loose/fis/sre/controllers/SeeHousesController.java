@@ -1,16 +1,20 @@
 package org.loose.fis.sre.controllers;
+import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectRepository;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
+import org.loose.fis.sre.model.House;
+import java.io.IOException;
+
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.loose.fis.sre.exceptions.HouseDoesNotExistsException;
+import org.loose.fis.sre.exceptions.AddressAlreadyExistsException;
 import org.loose.fis.sre.services.HouseService;
-
-import java.io.IOException;
 
 
 public class SeeHousesController {
@@ -25,11 +29,11 @@ public class SeeHousesController {
     public void handleSeeHouses() {
         seehousemesage.setText(HouseService.seeHouses());
     }
-
     @FXML
     public void handleSearchHouseAction(){
         try
         {
+
             seehousemesage.setText(HouseService.searchHouse(Address.getText()));
         }
         catch (HouseDoesNotExistsException e) {
