@@ -118,5 +118,16 @@ class HouseServiceTest {
         org.assertj.core.api.Assertions.assertThat(house.getSpecial()).isEqualTo(MOD);
         System.out.println("6");
     }
+
+    @Test
+    @Order(7)
+    @DisplayName("House can't be edited because it is not found")
+    void testHouseEditNotFound() {
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.editHouse("address",MOD,MOD,MOD,MOD,MOD);
+            HouseService.checkAddressDoesExist("address");
+        });
+        System.out.println("7");
+    }
 }
 
