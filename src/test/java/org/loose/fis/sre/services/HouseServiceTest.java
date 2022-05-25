@@ -147,5 +147,15 @@ class HouseServiceTest {
         });
         System.out.println("9");
     }
+
+    @Test
+    @Order(10)
+    @DisplayName("House exists")
+    void checkAddressDoesExistTest()  {
+        House house = HouseService.getAllHouses().get(0);
+        assertThat(house).isNotNull();
+        assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        System.out.println("10");
+    }
 }
 
