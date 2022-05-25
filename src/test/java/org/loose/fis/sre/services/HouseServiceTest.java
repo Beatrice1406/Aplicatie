@@ -129,5 +129,13 @@ class HouseServiceTest {
         });
         System.out.println("7");
     }
+
+    @Test
+    @Order(8)
+    @DisplayName("House is found")
+    void testHouseIsFound() throws HouseDoesNotExistsException {
+        assertThat(HouseService.searchHouse(ADDRESS)).isEqualTo("Address=Address, Size= Modify, Rooms= Modify, Baths= Modify, Floors= Modify, Special= Modify");
+        System.out.println("8");
+    }
 }
 
