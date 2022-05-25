@@ -58,6 +58,24 @@ class HouseServiceTest {
     }
 
     @Test
+    @Order(2)
+    @DisplayName("House is successfully persisted to Database")
+    void testHouseIsAddedToDatabase() throws AddressAlreadyExistsException {
+        HouseService.addHouse(ADDRESS, SIZE, ROOMS,BATHS,FLOORS, SPECIAL);
+        assertThat(HouseService.getAllHouses()).isNotEmpty();
+        assertThat(HouseService.getAllHouses()).size().isEqualTo(1);
+        House house = HouseService.getAllHouses().get(0);
+        assertThat(house).isNotNull();
+        assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        assertThat(house.getSize()).isEqualTo(SIZE);
+        assertThat(house.getRooms()).isEqualTo(ROOMS);
+        assertThat(house.getBaths()).isEqualTo(BATHS);
+        assertThat(house.getFloors()).isEqualTo(FLOORS);
+        assertThat(house.getSpecial()).isEqualTo(SPECIAL);
+        System.out.println("2");
+    }
+
+    @Test
     @Order(3)
     @DisplayName("House can not be added twice")
     void testHouseCanNotBeAddedTwice() {
