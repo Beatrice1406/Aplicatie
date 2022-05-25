@@ -31,7 +31,6 @@ public class HouseService {
         return houseRepository;
     }
 
-    // da
     public static String  seeHouses()
     {
         String s="";
