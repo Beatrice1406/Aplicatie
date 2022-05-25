@@ -157,5 +157,15 @@ class HouseServiceTest {
         assertThat(house.getAddress()).isEqualTo(ADDRESS);
         System.out.println("10");
     }
+
+    @Test
+    @Order(11)
+    @DisplayName("House does not exists")
+    void  checkAddressDoesNotExistTest() {
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist("notADDRESS");
+        });
+        System.out.println("11");
+    }
 }
 
