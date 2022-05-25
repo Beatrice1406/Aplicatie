@@ -85,5 +85,16 @@ class HouseServiceTest {
         });
         System.out.println("3");
     }
+
+    @Test
+    @Order(4)
+    @DisplayName("Address must be unique")
+    void testAddressDoesNotAlreadyExist() {
+        assertThrows(AddressAlreadyExistsException.class, () -> {
+            HouseService.addHouse(ADDRESS, SIZE, ROOMS,BATHS,FLOORS, SPECIAL);
+            HouseService.checkAddressDoesNotAlreadyExist(ADDRESS);
+        });
+        System.out.println("4");
+    }
 }
 
