@@ -49,6 +49,33 @@ class HouseServiceTest {
     }
 
     @Test
+    @Order(1)
+    @DisplayName("Database is initialized and there are no houses")
+    void testDataBaseIsInitializedAndNoHousesIsPersisted() {
+        assertThat(HouseService.getAllHouses()).isNotNull();
+        assertThat(HouseService.getAllHouses()).isEmpty();
+        System.out.println("1");
+    }
+
+    @Test
+    @Order(2)
+    @DisplayName("House is successfully persisted to Database")
+    void testHouseIsAddedToDatabase() throws AddressAlreadyExistsException {
+        HouseService.addHouse(ADDRESS, SIZE, ROOMS,BATHS,FLOORS, SPECIAL);
+        assertThat(HouseService.getAllHouses()).isNotEmpty();
+        assertThat(HouseService.getAllHouses()).size().isEqualTo(1);
+        House house = HouseService.getAllHouses().get(0);
+        assertThat(house).isNotNull();
+        assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        assertThat(house.getSize()).isEqualTo(SIZE);
+        assertThat(house.getRooms()).isEqualTo(ROOMS);
+        assertThat(house.getBaths()).isEqualTo(BATHS);
+        assertThat(house.getFloors()).isEqualTo(FLOORS);
+        assertThat(house.getSpecial()).isEqualTo(SPECIAL);
+        System.out.println("2");
+    }
+
+    @Test
     @Order(3)
     @DisplayName("House can not be added twice")
     void testHouseCanNotBeAddedTwice() {
@@ -58,5 +85,108 @@ class HouseServiceTest {
         });
         System.out.println("3");
     }
+
+    @Test
+    @Order(4)
+    @DisplayName("Address must be unique")
+    void testAddressDoesNotAlreadyExist() {
+        assertThrows(AddressAlreadyExistsException.class, () -> {
+            HouseService.addHouse(ADDRESS, SIZE, ROOMS,BATHS,FLOORS, SPECIAL);
+            HouseService.checkAddressDoesNotAlreadyExist(ADDRESS);
+        });
+        System.out.println("4");
+    }
+
+    @Test
+    @Order(5)
+    @DisplayName("House list is correct")
+    void testSeeHouses()  {
+        assertThat(HouseService.seeHouses()).isEqualTo("Address=Address, Size= Size, Rooms= Rooms, Baths= Baths, Floors= Floors, Special= Special\n");
+    }
+
+    @Test
+    @Order(6)
+    @DisplayName("House can be edited")
+    void testEditHouse() throws HouseDoesNotExistsException {
+        HouseService.editHouse(ADDRESS,MOD,MOD,MOD,MOD,MOD);
+        House house = HouseService.getAllHouses().get(0);
+        org.assertj.core.api.Assertions.assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        org.assertj.core.api.Assertions.assertThat(house.getSize()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getRooms()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getBaths()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getFloors()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getSpecial()).isEqualTo(MOD);
+        System.out.println("6");
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("House can't be edited because it is not found")
+    void testHouseEditNotFound() {
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.editHouse("address",MOD,MOD,MOD,MOD,MOD);
+            HouseService.checkAddressDoesExist("address");
+        });
+        System.out.println("7");
+    }
+
+    @Test
+    @Order(8)
+    @DisplayName("House is found")
+    void testHouseIsFound() throws HouseDoesNotExistsException {
+        assertThat(HouseService.searchHouse(ADDRESS)).isEqualTo("Address=Address, Size= Modify, Rooms= Modify, Baths= Modify, Floors= Modify, Special= Modify");
+        System.out.println("8");
+    }
+
+    @Test
+    @Order(9)
+    @DisplayName("House is not found")
+    void testHouseIsNotFound(){
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist("address");
+        });
+        System.out.println("9");
+    }
+
+    @Test
+    @Order(10)
+    @DisplayName("House exists")
+    void checkAddressDoesExistTest()  {
+        House house = HouseService.getAllHouses().get(0);
+        assertThat(house).isNotNull();
+        assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        System.out.println("10");
+    }
+
+    @Test
+    @Order(11)
+    @DisplayName("House does not exists")
+    void  checkAddressDoesNotExistTest() {
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist("notADDRESS");
+        });
+        System.out.println("11");
+    }
+
+    @Test
+    @Order(12)
+    @DisplayName("House deleted successfully")
+    void testDeleteHouse() throws HouseDoesNotExistsException{
+        HouseService.deleteHouse(ADDRESS);
+        assertThat(HouseService.getAllHouses()).isEmpty();
+        System.out.println("12");
+    }
+
+    @Test
+    @Order(13)
+    @DisplayName("House that must be deleted is not found")
+    void testNotFoundDeleteHouse(){
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist(ADDRESS);
+        });
+        System.out.println("13");
+    }
+
+
 }
 
