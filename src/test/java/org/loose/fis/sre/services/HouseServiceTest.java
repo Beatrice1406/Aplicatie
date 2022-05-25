@@ -176,5 +176,17 @@ class HouseServiceTest {
         assertThat(HouseService.getAllHouses()).isEmpty();
         System.out.println("12");
     }
+
+    @Test
+    @Order(13)
+    @DisplayName("House that must be deleted is not found")
+    void testNotFoundDeleteHouse(){
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist(ADDRESS);
+        });
+        System.out.println("13");
+    }
+
+
 }
 
