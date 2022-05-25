@@ -137,5 +137,15 @@ class HouseServiceTest {
         assertThat(HouseService.searchHouse(ADDRESS)).isEqualTo("Address=Address, Size= Modify, Rooms= Modify, Baths= Modify, Floors= Modify, Special= Modify");
         System.out.println("8");
     }
+
+    @Test
+    @Order(9)
+    @DisplayName("House is not found")
+    void testHouseIsNotFound(){
+        assertThrows(HouseDoesNotExistsException.class, () -> {
+            HouseService.checkAddressDoesExist("address");
+        });
+        System.out.println("9");
+    }
 }
 
