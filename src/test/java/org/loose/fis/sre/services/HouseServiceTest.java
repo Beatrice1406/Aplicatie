@@ -167,5 +167,14 @@ class HouseServiceTest {
         });
         System.out.println("11");
     }
+
+    @Test
+    @Order(12)
+    @DisplayName("House deleted successfully")
+    void testDeleteHouse() throws HouseDoesNotExistsException{
+        HouseService.deleteHouse(ADDRESS);
+        assertThat(HouseService.getAllHouses()).isEmpty();
+        System.out.println("12");
+    }
 }
 
