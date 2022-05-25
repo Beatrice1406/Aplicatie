@@ -103,5 +103,20 @@ class HouseServiceTest {
     void testSeeHouses()  {
         assertThat(HouseService.seeHouses()).isEqualTo("Address=Address, Size= Size, Rooms= Rooms, Baths= Baths, Floors= Floors, Special= Special\n");
     }
+
+    @Test
+    @Order(6)
+    @DisplayName("House can be edited")
+    void testEditHouse() throws HouseDoesNotExistsException {
+        HouseService.editHouse(ADDRESS,MOD,MOD,MOD,MOD,MOD);
+        House house = HouseService.getAllHouses().get(0);
+        org.assertj.core.api.Assertions.assertThat(house.getAddress()).isEqualTo(ADDRESS);
+        org.assertj.core.api.Assertions.assertThat(house.getSize()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getRooms()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getBaths()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getFloors()).isEqualTo(MOD);
+        org.assertj.core.api.Assertions.assertThat(house.getSpecial()).isEqualTo(MOD);
+        System.out.println("6");
+    }
 }
 
