@@ -49,6 +49,15 @@ class HouseServiceTest {
     }
 
     @Test
+    @Order(1)
+    @DisplayName("Database is initialized and there are no houses")
+    void testDataBaseIsInitializedAndNoHousesIsPersisted() {
+        assertThat(HouseService.getAllHouses()).isNotNull();
+        assertThat(HouseService.getAllHouses()).isEmpty();
+        System.out.println("1");
+    }
+
+    @Test
     @Order(3)
     @DisplayName("House can not be added twice")
     void testHouseCanNotBeAddedTwice() {
