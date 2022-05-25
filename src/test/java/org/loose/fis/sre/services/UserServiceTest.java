@@ -5,9 +5,13 @@ import org.junit.jupiter.api.*;
 import org.loose.fis.sre.exceptions.*;
 import org.loose.fis.sre.model.User;
 
+import java.io.IOException;
+import java.nio.file.FileSystemLoopException;
+
+import static org.assertj.core.api.InstanceOfAssertFactories.BYTE;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.testfx.assertions.api.Assertions.assertThat;
-
+import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserServiceTest {
     public static final String ADMIN = "admin";
@@ -73,5 +77,67 @@ class UserServiceTest {
             UserService.addUser(ADMIN, ADMIN, ADMIN,ADMIN,ADMIN);
         });
         System.out.println("3");
+    }
+    @Test
+    @Order(4)
+    @DisplayName("User can login")
+    void testUserCanLogin() throws UsernameAlreadyExistsException, IncorectCredentials {
+        UserService.addUser(AGENT, AGENT, AGENT,AGENT,AGENT);
+        assertThat(UserService.CheckUserCredentials(AGENT,AGENT,AGENT)).isEqualTo(2);
+        UserService.addUser(BUYER,BUYER,BUYER,BUYER,BUYER);
+        assertThat(UserService.CheckUserCredentials(BUYER,BUYER,BUYER)).isEqualTo(1);
+        System.out.println("4");
+    }
+    @Test
+    @Order(5)
+    @DisplayName("Username must be unique")
+    void testUserDoesNotAlreadyExist() {
+        assertThrows(UsernameAlreadyExistsException.class, () -> {
+            UserService.addUser(AGENT, AGENT, AGENT,AGENT,AGENT);
+            UserService.checkUserDoesNotAlreadyExist(AGENT);
+        });
+        System.out.println("5");
+    }
+    @Test
+    @Order(6)
+    @DisplayName("User can not login with wrong credentials")
+    void testUserCanNotLogin() {
+        assertThrows(IncorectCredentials.class, () -> {
+            UserService.CheckUserCredentials(AGENT,BUYER,BUYER);
+        });
+        System.out.println("6");
+    }
+    @Test
+    @Order(7)
+    @DisplayName("Agent does exist")
+    void testAgentDoesExist() {
+        assertThrows(AgentDoesNotExistException.class, () -> {
+            UserService.checkAgentDoesExist("agent");
+        });
+        System.out.println("7");
+    }
+    @Test
+    @Order(8)
+    @DisplayName("Username is correct")
+    void testUsernameDoesExist() {
+        assertThrows(IncorrectNameException.class, () -> {
+            UserService.checkUsername("agent");
+        });
+        System.out.println("8");
+    }
+    @Test
+    @Order(9)
+    @DisplayName("Name is correct")
+    void testNameDoesExist() {
+        assertThrows(NoBookigsExectpion.class, () -> {
+            UserService.CheckNameCredentials("agent");
+        });
+        System.out.println("9");
+    }
+    @Test
+    @Order(10)
+    @DisplayName("Agent list is correct")
+    void testAgentList() throws UsernameAlreadyExistsException {
+        assertThat(UserService.agents_lsit()).isEqualTo("fullName='Agent', phoneNumber='Agent'\n");
     }
 }
