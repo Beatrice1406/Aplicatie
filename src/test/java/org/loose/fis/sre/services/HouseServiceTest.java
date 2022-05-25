@@ -96,5 +96,12 @@ class HouseServiceTest {
         });
         System.out.println("4");
     }
+
+    @Test
+    @Order(5)
+    @DisplayName("House list is correct")
+    void testSeeHouses()  {
+        assertThat(HouseService.seeHouses()).isEqualTo("Address=Address, Size= Size, Rooms= Rooms, Baths= Baths, Floors= Floors, Special= Special\n");
+    }
 }
 
